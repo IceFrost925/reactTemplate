@@ -1,18 +1,17 @@
 import './App.css'
-import { BrowserRouter } from 'react-router-dom'
 import Pages from '@/routes/Pages'
-import { Fragment, useEffect } from 'react'
+import { Provider } from 'react-redux'
+import { HistoryRouter as Router } from 'redux-first-history/rr6'
+import { store, history } from './store'
 
 function App() {
-  useEffect(() => {
-    console.log(123)
-  })
+  console.log(history)
   return (
-    <Fragment>
-      <BrowserRouter>
+    <Provider store={store}>
+      <Router history={history}>
         <Pages />
-      </BrowserRouter>
-    </Fragment>
+      </Router>
+    </Provider>
   )
 }
 
