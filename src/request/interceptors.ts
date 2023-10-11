@@ -68,12 +68,12 @@ const businessStatus = (response: any) => {
         description: `服务器错误，code：${response.data.code}`
       })
   /*const { userStore } = useStore()
-          if (response.data.code == '2013') {
-            if (response.config.url == 'auth/logout') {
-              return
-            }
-            userStore.logout()
-          }*/
+              if (response.data.code == '2013') {
+                if (response.config.url == 'auth/logout') {
+                  return
+                }
+                userStore.logout()
+              }*/
 }
 
 // 浏览器状态处理
