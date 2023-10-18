@@ -4,7 +4,6 @@ import { Suspense, useEffect, useState } from 'react'
 import { getDelayedFallback } from '@/utils/lazyRoute/lazyRoute.tsx'
 import Loading from '@/components/Loading'
 import { loader as loaderOptions } from '@/config'
-import { RouterBeforeEach } from '@/routes/permission.ts'
 import { useAppSelector } from '@/hooks/redux.ts'
 import { Routes } from '@/routes/types.ts'
 import { cloneDeep } from 'lodash'
@@ -23,8 +22,9 @@ export const DynamicRoute = () => {
   // 生成动态路由
   const elements = useRoutes(authRoutes)
   useEffect(() => {
+    console.log('=====>DynamicRoute')
     setAuthRoutes(cloneDeep(userInfo.authMenu))
-  }, [userInfo.authMenu])
+  }, [])
 
   return <RoutesWrap>{elements}</RoutesWrap>
 }
@@ -32,12 +32,9 @@ export const DynamicRoute = () => {
 const RoutesWrap = ({ children }: AnyProps) => {
   // 加载文案组件
   const Fallback = loaderOptions.delay ? getDelayedFallback(Loading, loaderOptions.delay) : Loading
-
   return (
     <div>
-      <Suspense fallback={<Fallback />}>
-        <RouterBeforeEach>{children}</RouterBeforeEach>
-      </Suspense>
+      <Suspense fallback={<Fallback />}>{children}</Suspense>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import {responseBody} from './utils.js' // 菜单权限
 const menus = [
   'authManage',
   'accountManage',
-  // "menuManage", 未分配权限
+  // "menuManage", // 未分配权限
   'roleManage',
   'Nested',
   'Menu1',

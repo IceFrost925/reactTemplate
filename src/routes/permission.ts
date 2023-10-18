@@ -1,22 +1,30 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { Routes } from './types'
 import { AnyProps } from '@/utils/lazyRoute/types'
 import { routes } from '@/routes/index.ts'
 import { addRouteAsync } from '@/store/reducers/userInfoReducer.ts'
 import { cloneDeep } from 'lodash'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux.ts'
+import { getUserInfoAction } from '@/store/actions/userInfo.action.ts'
 
 export const RouterBeforeEach = ({ children }: AnyProps) => {
   const userInfo = useAppSelector('userInfo')
   const location = useLocation()
   const dispatch = useAppDispatch()
   const navigator = useNavigate()
+
+  const getUserInfo = useCallback(async () => {
+    await dispatch(getUserInfoAction())
+    dispatch(addRouteAsync(cloneDeep(routes)))
+  }, [])
   useEffect(() => {
     // 判断是否登录
     if (userInfo.loginToken) {
       // 根据权限设置动态路由
-      if (!userInfo.isRefreshStatus) dispatch(addRouteAsync(cloneDeep(routes)))
+      if (!userInfo.isRefreshStatus) {
+        getUserInfo()
+      }
     } else {
       // 未登录调整登录页
       if (location.pathname != '/') {

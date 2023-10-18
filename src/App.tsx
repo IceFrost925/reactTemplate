@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react'
 import zhCN from 'antd/locale/zh_CN'
 import { ConfigProvider } from 'antd'
 import { BrowserRouter } from 'react-router-dom'
+import { RouterBeforeEach } from '@/routes/permission.ts'
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <ConfigProvider locale={zhCN}>
         <Provider store={store}>
           <PersistGate persistor={persistor}>
-            <Pages />
+            <RouterBeforeEach>
+              <Pages />
+            </RouterBeforeEach>
           </PersistGate>
         </Provider>
       </ConfigProvider>
