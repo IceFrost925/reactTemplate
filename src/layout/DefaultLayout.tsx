@@ -33,7 +33,7 @@ const DefaultLayout: React.FC = () => {
   }, [])
   // 根据路由初始化菜单
   const initSelectKeys = () => {
-    const keys = RegExp(/^(\/\w+)(\/\w+)$/).exec(location.pathname) || []
+    const keys = RegExp(/^(\/\w+)(\/\w+)$/).exec(location.pathname) ?? []
     setSelectedKeys([location.pathname])
     setOpenKeys(keys)
   }
