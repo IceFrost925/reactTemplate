@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+## React + TypeScript + Vite 基础模版
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -9,23 +9,8 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast
   Refresh
 
-## Expanding the ESLint configuration
+## 本项目搭载的技术栈
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+react18 + vite4 + antd5 + react-router6 + redux + redux-toolkit + redux-persist + axios + less
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked`
-  or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and
-  add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+> 声明：该项目仅为初始模版，后期有时间慢慢完善
