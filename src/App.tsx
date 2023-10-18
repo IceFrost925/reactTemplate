@@ -1,4 +1,3 @@
-import './App.css'
 import Pages from '@/routes/Pages'
 import { Provider } from 'react-redux'
 import { persistor, store } from './store'
