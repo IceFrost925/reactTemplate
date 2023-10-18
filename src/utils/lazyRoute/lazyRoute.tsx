@@ -1,6 +1,6 @@
-import { FC, lazy, useEffect, useState } from 'react'
+import {FC, lazy, useEffect, useState} from 'react'
 
-import { AnyProps, LoadComponent, LoaderDefaultOptions } from './types.ts'
+import {AnyProps, LoadComponent, LoaderDefaultOptions} from './types.ts' // 设置加载中的文案
 
 // 设置加载中的文案
 function getDelayedFallback(Fallback: FC, delay: number) {

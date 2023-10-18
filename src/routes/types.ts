@@ -1,15 +1,15 @@
-import { FC, ComponentType } from 'react'
+import { ComponentType, FC } from 'react'
 import { NonIndexRouteObject } from 'react-router-dom'
 
-type PathRouteCustomProps = {
+interface Routes extends NonIndexRouteObject {
   title?: string
   path: string
-  Component: ComponentType | FC
+  name?: string
+  Component?: ComponentType | FC
   icon?: string
   children?: Routes[]
+  hidden?: boolean
   auth?: boolean
 }
-
-type Routes = NonIndexRouteObject & PathRouteCustomProps
 
 export type { Routes }

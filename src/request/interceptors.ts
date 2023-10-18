@@ -1,6 +1,7 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { notification } from 'antd'
-import 'antd/es/notification/style/css'
+import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios'
+import {notification} from 'antd'
+import {useAppDispatch} from '@/hooks/redux.ts'
+import {logoutAction} from '@/store/actions/userInfo.action.ts'
 
 // 请求拦截器
 export const requestInterceptor = (instance: AxiosInstance) => {
@@ -28,7 +29,7 @@ export const responseInterceptor = (instance: AxiosInstance) => {
     function (response: AxiosResponse<ResponseType>) {
       const key: string = CancelToken.getKey(response.config)
       CancelToken.cencelRequest(key)
-      if (response?.data?.code === '200') {
+      if (response?.data?.code == '200') {
         return Promise.resolve(response.data)
       }
       // 下载文件流处理
@@ -67,13 +68,13 @@ const businessStatus = (response: any) => {
         message: '提示',
         description: `服务器错误，code：${response.data.code}`
       })
-  /*const { userStore } = useStore()
-              if (response.data.code == '2013') {
-                if (response.config.url == 'auth/logout') {
-                  return
-                }
-                userStore.logout()
-              }*/
+  if (response.data.code == '2013') {
+    if (response.config.url == 'auth/logout') {
+      return
+    }
+    const dispatch = useAppDispatch()
+    dispatch(logoutAction())
+  }
 }
 
 // 浏览器状态处理
